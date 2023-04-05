@@ -1,4 +1,4 @@
-// import throttle from 'lodash.throttle';
+import throttle from 'lodash.throttle';
 
 const form = document.querySelector('.feedback-form');
 
@@ -7,9 +7,7 @@ const messageInput = form.querySelector('textarea[name="message"]');
 
 const objects = {};
 
-form.addEventListener('input', onFormInput);
-
-// localStorage.setItem('feedback-form-state', JSON.stringify(objects));
+form.addEventListener('input', throttle(onFormInput, 500));
 
 function onFormInput(evt) {
   objects[evt.target.name] = evt.target.value;
@@ -28,7 +26,7 @@ function onFormSubmit(event) {
 
 fillingHalfs();
 
-function fillingHalfs(eve) {
+function fillingHalfs() {
   const saveMessage = localStorage.getItem('feedback-form-state');
   if (saveMessage) {
     const parseSavedMessage = JSON.parse(saveMessage);
