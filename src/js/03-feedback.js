@@ -32,5 +32,7 @@ function fillingHalfs() {
     const parseSavedMessage = JSON.parse(saveMessage);
     emailInput.value = parseSavedMessage.email;
     messageInput.value = parseSavedMessage.message;
+    objects.email = parseSavedMessage.email;
+    objects.message = parseSavedMessage.message;
   }
 }
